@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MainApp">
 <head>
 	<meta charset="utf-8">
 	<title>Local Weather</title>
-	</head>
-	<body>
-		<h1>Get Local Weather</h1>
-	</body>
+</head>
+<body ng-controller="WeatherController as vm">
+	<h1>Get Local Weather</h1>
+	<input type="text" ng-model="vm.zip" placeholder="Enter Zip Code:" />
+	<button type="button" ng-click="vm.getLocalWeather(vm.zip)">Get Local Weather</button>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+	<script src="main.js"></script>
+	<script src="WeatherService.js"></script>
+</body>
 </html>
