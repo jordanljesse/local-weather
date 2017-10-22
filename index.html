@@ -5,13 +5,23 @@
 	<title>Local Weather</title>
 </head>
 <body ng-controller="WeatherController as vm">
-	<h1>Get Local Weather</h1>
-	<input type="text" ng-model="vm.zip" placeholder="Enter Zip Code:" />
-	<button type="button" ng-click="vm.getLocalWeather(vm.zip)">Get Local Weather</button>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
-	<script src="main.js"></script>
-	<script src="WeatherService.js"></script>
+	<div class="container-fluid">
+		<h1>Get Local Weather</h1>
+		<input type="text" ng-model="vm.zip" placeholder="Enter Zip Code:" />
+		<button type="button" ng-click="vm.getLocalWeather(vm.zip)">Get Local Weather</button>
+		<div class="results">
+			<img src={{vm.local.icon_url}} />
+			<p>Location: {{ vm.local.display_location.full }}</p>
+			<p>Current Weather: {{ vm.local.weather }}</p>
+			<p>Temperature F: {{ vm.local.temp_f }}</p>
+			<p>Feels Like F: {{ vm.local.feelslike_f }}</p>
+			<p>Humidity: {{ vm.local.relative_humidity }}</p>
+			<p>Wind: {{ vm.local.wind_string }}</p>
+		</div>
+	</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="main.js"></script>
+<script src="WeatherService.js"></script>
 </body>
 </html>
