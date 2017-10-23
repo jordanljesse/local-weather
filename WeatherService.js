@@ -13,7 +13,8 @@
 		svc.getWeatherByLocation = _getWeatherByLocation;
 
 		// API endpoint settings
-		svc.url = 'http://api.wunderground.com/api/'
+		// API documentation: https://www.wunderground.com/weather/api/d/docs?d=data/index&MR=1
+		svc.url = 'https://api.wunderground.com/api/'
 		svc.key = '2ff8268a590b43f8/';
 		svc.feature = {
 			conditions: 'conditions/q/',
