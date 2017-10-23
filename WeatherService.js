@@ -9,7 +9,8 @@
 	function WeatherService($http) {
 		var svc = this;
 
-		svc.getLocalWeather = _getLocalWeather;
+		svc.getWeatherByZip = _getWeatherByZip;
+		svc.getWeatherByLocation = _getWeatherByLocation;
 
 		// API endpoint settings
 		svc.url = 'http://api.wunderground.com/api/'
@@ -25,9 +26,18 @@
 		svc.query = 'CA/Los_Angeles';
 		svc.format = '.json';
 
-		function _getLocalWeather(location) {
+		function _getWeatherByZip(location) {
 			var settings = {
 				url: svc.url + svc.key + svc.feature.conditions + location + svc.format,
+				method: 'GET'
+			};
+
+			return $http(settings);
+		}
+
+		function _getWeatherByLocation(location) {
+			var settings = {
+				url: svc.url + svc.key + svc.feature.conditions + location.coords.latitude + "," + location.coords.longitude + svc.format,
 				method: 'GET'
 			};
 
