@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html ng-app="MainApp">
-	<head>
-		<meta charset="utf-8">
-		<title>Local Weather</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	</head>
-	<body ng-controller="WeatherController as vm" style="background-image: url('background.jpg');">
-		<div class="container-fluid">
-			<div class="col col-md-9 mr-auto ml-auto">
-
-				<!-- Header -->
-				<div class="row" style="margin: 20px 0px;">
-					<h1 class="ml-auto mr-auto display-1" style="color: white;">What's The Weather?</h1>
-				</div>
-
-				<!-- Buttons -->
-				<div class="row" style="margin: 10px 0px;">
-					<div class="col">
-						<input type="text" class="form-control" ng-model="vm.zip" placeholder="Enter Zip Code:" />
-					</div>
-					<div class="col">
-						<button type="submit" class="btn btn-primary form-control" ng-click="vm.getWeatherByZip(vm.zip)">Get Weather By Zip</button>
-					</div>
-					<div class="col">
-						<button type="submit" class="btn btn-info form-control" ng-click="vm.getWeatherByLocation()">Get Local Weather</button>
-					</div>
-				</div>
-
-				<!-- Results -->
-				<div class='results' style="margin: 50px 0px; color: white;" ng-show="vm.local.weather">
-					<div class="col col-md-4 ml-auto mr-auto">
-						<div class="row">
-							<h1>{{ vm.local.display_location.full }}</h1>
-							<img src={{vm.local.icon_url}} />
-						</div>
-
-						<div class="row">
-							<h3>{{ vm.local.weather }} and {{ vm.local.temp_f }} F°</h3>
-						</div>
-
-						<div class="row">
-							<p>Feels like {{ vm.local.feelslike_f }} F°</p>
-						</div>
-						<div class="row">
-							<p>Humidity {{ vm.local.relative_humidity }}</p>
-						</div>
-						<div class="row">
-							<p>Wind is {{ vm.local.wind_string }}</p>
-						</div>
-					</div>
-				</div>	
+<head>
+	<meta charset="utf-8">
+	<title>Local Weather</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body ng-controller="WeatherController as vm" style="background-image: url('background.jpg'); font-family:'Roboto';">
+	<div class="container-fluid">
+		<div class="col col-md-9 mr-auto ml-auto">
+			<!-- Header -->
+			<div class="row" style="margin: 20px 0px;">
+				<h1 class="ml-auto mr-auto display-1" style="color: white; font-family: 'Lobster'">What's The Weather?</h1>
 			</div>
-		</div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
-	<script src="main.js"></script>
-	<script src="WeatherService.js"></script>
-	</body>
+			<!-- Buttons -->
+			<div class="row" style="margin: 10px 0px;">
+				<div class="col">
+					<input type="text" class="form-control" ng-model="vm.zip" placeholder="Enter Zip Code:" />
+				</div>
+				<div class="col">
+					<button type="submit" class="btn btn-primary form-control" ng-click="vm.getWeatherByZip(vm.zip)">Get Weather By Zip</button>
+				</div>
+				<div class="col">
+					<button type="submit" class="btn btn-info form-control" ng-click="vm.getWeatherByLocation()">Get Local Weather</button>
+				</div>
+			</div>
+
+			<!-- Results -->
+			<div class='results' style="margin: 50px 0px; color: white;" ng-show="vm.local.weather">
+				<div class="col col-md-4 ml-auto mr-auto">
+					<div class="row">
+						<h1>{{ vm.local.display_location.full }}</h1>
+						<img src={{vm.local.icon_url}} />
+					</div>
+					<div class="row">
+						<h3>{{ vm.local.weather }} and {{ vm.local.temp_f }} F°</h3>
+					</div>
+					<div class="row">
+						<p>Feels like {{ vm.local.feelslike_f }} F°</p>
+					</div>
+					<div class="row">
+						<p>Humidity {{ vm.local.relative_humidity }}</p>
+					</div>
+					<div class="row">
+						<p>Wind is {{ vm.local.wind_string }}</p>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+<script src="main.js"></script>
+<script src="WeatherService.js"></script>
+</body>
 </html>
