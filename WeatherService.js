@@ -14,7 +14,7 @@
 
 		// API endpoint settings
 		// API documentation: https://www.wunderground.com/weather/api/d/docs?d=data/index&MR=1
-		svc.url = 'https://api.wunderground.com/api/'
+		svc.url = 'http://api.wunderground.com/api/'
 		svc.key = '2ff8268a590b43f8/';
 		svc.feature = {
 			conditions: 'conditions/q/',
@@ -29,7 +29,7 @@
 
 		function _getWeatherByZip(location) {
 			var settings = {
-				url: svc.url + svc.key + svc.feature.conditions + location + svc.format,
+				url: svc.url + svc.key + svc.feature.conditions + encodeURIComponent(location) + svc.format,
 				method: 'GET'
 			};
 
