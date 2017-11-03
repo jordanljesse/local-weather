@@ -11,7 +11,6 @@
 
 		svc.getWeatherByZip = _getWeatherByZip;
 		svc.getWeatherByLocation = _getWeatherByLocation;
-		svc.getThreeDayForecast = _getThreeDayForecast;
 
 		// API endpoint settings
 		// API documentation: https://www.wunderground.com/weather/api/d/docs?d=data/index&MR=1
@@ -44,20 +43,6 @@
 					 svc.key +
 					 svc.feature.conditions +
 					 location.coords.latitude + ',' + location.coords.longitude +
-					 svc.format,
-				method: 'GET'
-			});
-		}
-
-		function _getThreeDayForecast(location) {
-			if(location.coords)
-				location = location.coords.latitude + ',' + location.coords.longitude;
-
-			return $http({
-				url: svc.url +
-					 svc.key +
-					 svc.feature.forecast +
-					 location +
 					 svc.format,
 				method: 'GET'
 			});

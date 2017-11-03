@@ -19,14 +19,10 @@
 
 		function _getWeatherByZip(location) {
 			WeatherService.getWeatherByZip(location)
-				.then(_success, error => console.error(error));
-
-			function _success(response) {
-				console.log('_getWeatherByZipComplete', response.data);
-				vm.local = response.data.current_observation;
-				WeatherService.getThreeDayForecast(location)
-					.then(response => console.log(response), error => console.error(error));
-			}
+				.then(
+					response => vm.local = response.data.current_observation,
+				 	error => console.error(error)
+				);
 		}
 
 		function _getWeatherByLocation() {
