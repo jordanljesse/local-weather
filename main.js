@@ -19,31 +19,23 @@
 
 		function _getWeatherByZip(location) {
 			WeatherService.getWeatherByZip(location)
-				.then(_getWeatherByZipComplete, _getWeatherByZipFail);
+				.then(_success, error => console.error(error));
 
-			function _getWeatherByZipComplete(response) {
+			function _success(response) {
 				console.log('_getWeatherByZipComplete', response.data);
 				vm.local = response.data.current_observation;
-			}
-
-			function _getWeatherByZipFail(error) {
-				conosle.error('_getWeatherByZipFail', error);
+				WeatherService.getThreeDayForecast(location)
+					.then(response => console.log(response), error => console.error(error));
 			}
 		}
 
 		function _getWeatherByLocation() {
 			navigator.geolocation.getCurrentPosition(function(location) {
 				WeatherService.getWeatherByLocation(location)
-					.then(_getWeatherByLocationComplete, _getWeatherByLocationFail);
-
-				function _getWeatherByLocationComplete(response) {
-					console.log('_getWeatherByLocationComplete', response.data);
-					vm.local = response.data.current_observation;
-				}
-
-				function _getWeatherByLocationFail(error) {
-					console.error('_getWeatherByLocationFail', error.data);
-				}
+					.then(
+						response => vm.local = response.data.current_observation,
+						error => console.error(error)
+					);
 			});
 		}
 	}

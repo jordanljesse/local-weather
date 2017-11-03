@@ -1,0 +1,23 @@
+body {
+	background-image: url('background.jpg');
+	font-family: 'Roboto';
+}
+
+.header {
+	margin: 20px 0px;
+	color: white;
+	font-family: 'Lobster';
+}
+
+.buttons {
+	margin: 10px 0px;
+}
+
+.current-conditions {
+	margin: 50px 0px;
+	color: white;
+}
+
+.buttons input, .buttons button {
+	margin: 10px 0;
+}

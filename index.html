@@ -1,57 +1,47 @@
-<!DOCTYPE html>
+<!DOCTYPE html />
 <html ng-app="MainApp">
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" />
 	<title>Local Weather</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+	<link href="style.css" rel="stylesheet" />
 </head>
-<body ng-controller="WeatherController as vm" style="background-image: url('background.jpg'); font-family:'Roboto';">
+<body ng-controller="WeatherController as vm">
 	<div class="container-fluid">
-		<div class="col col-md-9 mr-auto ml-auto">
-			<!-- Header -->
-			<div class="row" style="margin: 20px 0px;">
-				<h1 class="ml-auto mr-auto display-1" style="color: white; font-family: 'Lobster'">What's The Weather?</h1>
+		<!-- Header -->
+		<div class="header row">
+			<h1 class="col text-center display-1">What's The Weather?</h1>
+		</div>
+		<!-- Buttons -->
+		<div class="buttons row justify-content-center">
+			<div class="col-xs-6 col-md-3">
+				<input type="text" class="form-control" ng-model="vm.zip" placeholder="Enter Zip Code:" />
 			</div>
-
-			<!-- Buttons -->
-			<div class="row" style="margin: 10px 0px;">
-				<div class="col">
-					<input type="text" class="form-control" ng-model="vm.zip" placeholder="Enter Zip Code:" />
-				</div>
-				<div class="col">
-					<button type="submit" class="btn btn-primary form-control" ng-click="vm.getWeatherByZip(vm.zip)">Get Weather By Zip</button>
-				</div>
-				<div class="col">
-					<button type="submit" class="btn btn-info form-control" ng-click="vm.getWeatherByLocation()">Get Local Weather</button>
-				</div>
+			<div class="col-xs-6 col-md-3">
+				<button type="submit" class="btn btn-primary form-control" ng-click="vm.getWeatherByZip(vm.zip)">Get Weather By Zip</button>
 			</div>
-
-			<!-- Results -->
-			<div class='results' style="margin: 50px 0px; color: white;" ng-show="vm.local.weather">
-				<div class="col col-md-4 ml-auto mr-auto">
-					<div class="row">
-						<h1>{{ vm.local.display_location.full }}</h1>
-						<img src={{vm.local.icon_url}} />
-					</div>
-					<div class="row">
-						<h3>{{ vm.local.weather }} and {{ vm.local.temp_f }} F°</h3>
-					</div>
-					<div class="row">
-						<p>Feels like {{ vm.local.feelslike_f }} F°</p>
-					</div>
-					<div class="row">
-						<p>Humidity {{ vm.local.relative_humidity }}</p>
-					</div>
-					<div class="row">
-						<p>Wind is {{ vm.local.wind_string }}</p>
-					</div>
-				</div>
-			</div>	
+			<div class="col-xs-6 col-md-3">
+				<button type="submit" class="btn btn-info form-control" ng-click="vm.getWeatherByLocation()">Get Local Weather</button>
+			</div>
+		</div>
+		<!-- Current Conditions -->
+		<div class="current-conditions row justify-content-center text-center" ng-show="vm.local.weather">
+			<div class="col-12">
+				<h1>{{ vm.local.display_location.full }}</h1>
+				<img src={{vm.local.icon_url}} />
+				<h3>{{ vm.local.weather }} and {{ vm.local.temp_f }} F°</h3>
+				<p>Feels like {{ vm.local.feelslike_f }} F°</p>
+				<p>Humidity {{ vm.local.relative_humidity }}</p>
+				<p>Wind is {{ vm.local.wind_string }}</p>
+			</div>
+		</div>	
+		<!-- 3 Day Forecast -->
+		<div>
+			
 		</div>
 	</div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
 <script src="main.js"></script>
