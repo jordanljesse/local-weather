@@ -18,7 +18,7 @@
 		};
 
 		function _getWeatherByZip(location) {
-			WeatherService.getWeatherByZip(location)
+			WeatherService.getCurrentConditions(location)
 				.then(
 					response => vm.local = response.data.current_observation,
 				 	error => console.error(error)
@@ -27,7 +27,7 @@
 
 		function _getWeatherByLocation() {
 			navigator.geolocation.getCurrentPosition(function(location) {
-				WeatherService.getWeatherByLocation(location)
+				WeatherService.getCurrentConditions(location)
 					.then(
 						response => vm.local = response.data.current_observation,
 						error => console.error(error)
