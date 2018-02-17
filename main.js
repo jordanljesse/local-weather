@@ -11,11 +11,13 @@
 	function WeatherController(WeatherService) {
 		var vm = this;
 
-		vm.getWeatherByZip = _getWeatherByZip;
+
 		vm.getWeatherByLocation = _getWeatherByLocation;
+		vm.getWeatherByZip = _getWeatherByZip;
 		vm.local = {
 			zip: null
 		};
+
 
 		function _getWeatherByZip(location) {
 			WeatherService.getCurrentConditions(location)
